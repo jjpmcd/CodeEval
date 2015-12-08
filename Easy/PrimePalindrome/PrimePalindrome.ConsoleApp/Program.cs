@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PrimePalindrome.ConsoleApp
 {
-    class Program
+    internal class Program
     {
         private static void Main(string[] args)
         {
@@ -16,7 +16,7 @@ namespace PrimePalindrome.ConsoleApp
                 {
                     var line = reader.ReadLine();
                     if (null == line) continue;
-                    // do something with line
+                    Console.WriteLine(NumberProcessor.FindLargestPrimePalindrome(int.Parse(line)));
                 }
         }
     }
@@ -37,6 +37,34 @@ namespace PrimePalindrome.ConsoleApp
             }
 
             return isPalindrome;
+        }
+
+        public static bool IsPrime(int number)
+        {
+            var isPrime = true;
+            var upperBound = (int)Math.Sqrt(number) + 1;
+
+            for (var i = 2; i < upperBound; i++)
+            {
+                if (number % i != 0) continue;
+                isPrime = false;
+                break;
+            }
+
+            return isPrime;
+        }
+
+        public static int FindLargestPrimePalindrome(int upperBound)
+        {
+            for (var candidate = upperBound - 1; candidate > 1; candidate--)
+            {
+                if (IsPalindrome(candidate) && IsPrime(candidate))
+                {
+                    return candidate;
+                }
+            }
+
+            return -1;
         }
     }
 }
