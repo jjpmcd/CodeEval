@@ -11,13 +11,7 @@ namespace PrimePalindrome.ConsoleApp
     {
         private static void Main(string[] args)
         {
-            using (var reader = File.OpenText(args[0]))
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    if (null == line) continue;
-                    Console.WriteLine(NumberProcessor.FindLargestPrimePalindrome(int.Parse(line)));
-                }
+            Console.WriteLine(NumberProcessor.FindLargestPrimePalindrome(1000));
         }
     }
 
