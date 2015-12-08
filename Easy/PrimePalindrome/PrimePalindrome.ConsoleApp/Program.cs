@@ -20,4 +20,23 @@ namespace PrimePalindrome.ConsoleApp
                 }
         }
     }
+
+    public static class NumberProcessor
+    {
+        public static bool IsPalindrome(int number)
+        {
+            var isPalindrome = true;
+            var numberString = number.ToString();
+            var upperBound = numberString.Length / 2 + 1;
+
+            for (var index = 0; index < upperBound; index++)
+            {
+                if (numberString[index] == numberString[numberString.Length - 1 - index]) continue;
+                isPalindrome = false;
+                break;
+            }
+
+            return isPalindrome;
+        }
+    }
 }

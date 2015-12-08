@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PrimePalindrome.ConsoleApp;
 
 namespace PrimePalindrome.UnitTests
 {
@@ -7,8 +8,27 @@ namespace PrimePalindrome.UnitTests
     public class UnitTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TheNumber929IsAPalindrome()
         {
+            int input = 929;
+            var result = NumberProcessor.IsPalindrome(input);
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void TheNumber1000IsNotAPalindrome()
+        {
+            int input = 1000;
+            var result = NumberProcessor.IsPalindrome(input);
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void TheNumber11IsAPalindrome()
+        {
+            int input = 11;
+            var result = NumberProcessor.IsPalindrome(input);
+            Assert.IsTrue(result);
         }
     }
 }
