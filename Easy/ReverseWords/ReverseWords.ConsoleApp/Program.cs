@@ -22,6 +22,19 @@ namespace ReverseWords.ConsoleApp
     {
         public static string ReverseWords(string sentence)
         {
+            var words = sentence.Split();
+            var result = words[words.Length - 1];
+
+            for (var i = words.Length - 2; i >= 0; i--)
+            {
+                result = result + " " + words[i];
+            }
+
+            return result;
+        }
+
+        public static string ReverseWordsLINQ(string sentence)
+        {
             return sentence.Split(' ').Reverse().Aggregate(
                 (workingSentence, nextWord) => workingSentence + " " + nextWord);
         }
