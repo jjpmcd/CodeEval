@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReverseWords.ConsoleApp", "ReverseWords.ConsoleApp\ReverseWords.ConsoleApp.csproj", "{62DE4D30-F889-4D63-8E9F-A23449D9885C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReverseWords.UnitTests", "ReverseWords.UnitTests\ReverseWords.UnitTests.csproj", "{700BEA7F-EB7A-4EBE-9383-B5CA1B6BAA0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62DE4D30-F889-4D63-8E9F-A23449D9885C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62DE4D30-F889-4D63-8E9F-A23449D9885C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62DE4D30-F889-4D63-8E9F-A23449D9885C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62DE4D30-F889-4D63-8E9F-A23449D9885C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{700BEA7F-EB7A-4EBE-9383-B5CA1B6BAA0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{700BEA7F-EB7A-4EBE-9383-B5CA1B6BAA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{700BEA7F-EB7A-4EBE-9383-B5CA1B6BAA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{700BEA7F-EB7A-4EBE-9383-B5CA1B6BAA0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
