@@ -53,6 +53,12 @@
     <Compile Include="UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReverseWords.ConsoleApp\ReverseWords.ConsoleApp.csproj">
+      <Project>{62de4d30-f889-4d63-8e9f-a23449d9885c}</Project>
+      <Name>ReverseWords.ConsoleApp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

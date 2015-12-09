@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReverseWords.ConsoleApp
 {
@@ -16,8 +13,17 @@ namespace ReverseWords.ConsoleApp
                 {
                     var line = reader.ReadLine();
                     if (null == line) continue;
-                    // do something with line
+                    Console.WriteLine(StringProcessor.ReverseWords(line));
                 }
+        }
+    }
+
+    public static class StringProcessor
+    {
+        public static string ReverseWords(string sentence)
+        {
+            return sentence.Split(' ').Reverse().Aggregate(
+                (workingSentence, nextWord) => workingSentence + " " + nextWord);
         }
     }
 }
