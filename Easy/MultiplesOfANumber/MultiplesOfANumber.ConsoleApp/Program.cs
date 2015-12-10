@@ -25,7 +25,8 @@ namespace MultiplesOfANumber.ConsoleApp
             var x = int.Parse(splitInput[0]);
             var n = int.Parse(splitInput[1]);
 
-            var result = FindSmallestMultipleUsingAddition(x, n);
+            //var result = FindSmallestMultipleUsingAddition(x, n);
+            var result = FindSmallestMultipleUsingBitShift(x, n);
 
             return result;
         }
@@ -35,6 +36,12 @@ namespace MultiplesOfANumber.ConsoleApp
             var result = n;
             while (x > result) result += n;
             return result;
+        }
+
+        private static int FindSmallestMultipleUsingBitShift(int x, int n)
+        {
+            while (x > n) n <<= 1;
+            return n;
         }
     }
 }
