@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MultiplesOfANumber.ConsoleApp
 {
@@ -16,8 +12,29 @@ namespace MultiplesOfANumber.ConsoleApp
                 {
                     var line = reader.ReadLine();
                     if (null == line) continue;
-                    // do something with line
+                    Console.WriteLine(MultipleProcessor.FindSmallestMultiple(line));
                 }
+        }
+    }
+
+    public static class MultipleProcessor
+    {
+        public static int FindSmallestMultiple(string input)
+        {
+            var splitInput = input.Split(',');
+            var x = int.Parse(splitInput[0]);
+            var n = int.Parse(splitInput[1]);
+
+            var result = FindSmallestMultipleUsingAddition(x, n);
+
+            return result;
+        }
+
+        private static int FindSmallestMultipleUsingAddition(int x, int n)
+        {
+            var result = n;
+            while (x > result) result += n;
+            return result;
         }
     }
 }
