@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lowercase.ConsoleApp
 {
@@ -16,8 +12,16 @@ namespace Lowercase.ConsoleApp
                 {
                     var line = reader.ReadLine();
                     if (null == line) continue;
-                    // do something with line
+                    Console.WriteLine(CaseConverter.ToLowercase(line));
                 }
+        }
+    }
+
+    public static class CaseConverter
+    {
+        public static string ToLowercase(string input)
+        {
+            return input.ToLower();
         }
     }
 }
