@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FibonacciSeries.ConsoleApp
 {
@@ -16,8 +12,32 @@ namespace FibonacciSeries.ConsoleApp
                 {
                     var line = reader.ReadLine();
                     if (null == line) continue;
-                    // do something with line
+                    Console.WriteLine(FibonacciGenerator.GetNthNumber(line));
                 }
+        }
+    }
+
+    public static class FibonacciGenerator
+    {
+        public static int GetNthNumber(string input)
+        {
+            var n = int.Parse(input);
+            
+            if (n < 2) return n;
+
+            var nMinus2 = 0;
+            var nMinus1 = 1;
+
+            var nth = 0;
+
+            for (var i = 2; i <= n; i++)
+            {
+                nth = nMinus1 + nMinus2;
+                nMinus2 = nMinus1;
+                nMinus1 = nth;
+            }
+
+            return nth;
         }
     }
 }
