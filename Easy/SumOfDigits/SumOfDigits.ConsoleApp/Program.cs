@@ -22,7 +22,7 @@ namespace SumOfDigits.ConsoleApp
         public static int SumOfDigits(string input)
         {
             var dividend = int.Parse(input);
-            const int divisor = 10;
+            byte divisor = 10;
             var sum = 0;
 
             while (dividend > 0)
