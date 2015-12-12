@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SumOfDigits.ConsoleApp
 {
@@ -16,8 +12,27 @@ namespace SumOfDigits.ConsoleApp
                 {
                     var line = reader.ReadLine();
                     if (null == line) continue;
-                    // do something with line
+                    Console.WriteLine(DigitProcessor.SumOfDigits(line));
                 }
+        }
+    }
+
+    public static class DigitProcessor
+    {
+        public static int SumOfDigits(string input)
+        {
+            var dividend = int.Parse(input);
+            const int divisor = 10;
+            var sum = 0;
+
+            while (dividend > 0)
+            {
+                int remainder;
+                dividend = Math.DivRem(dividend, divisor, out remainder);
+                sum += remainder;
+            }
+
+            return sum;
         }
     }
 }
