@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 
 namespace UniqueElements.ConsoleApp
 {
@@ -22,9 +21,36 @@ namespace UniqueElements.ConsoleApp
     {
         public static string GetUniqueElements(string input)
         {
-            var splitInput = input.Split(',');
-            var output = splitInput.Distinct().Aggregate((workingString, nextElement) => workingString + ',' + nextElement);
-            return output;
+            var result = "";
+            var current = "";
+            var previous = "";
+
+            foreach (var c in input)
+            {
+                if (c != ',')
+                {
+                    current += c;
+                    continue;
+                }
+
+                if (current != previous)
+                {
+                    if (result != "")
+                    {
+                        result += ',';
+                    }
+                    result += current;
+                    previous = current;
+                }
+                current = "";
+            }
+
+            if (current != previous)
+            {
+                result += ',' + current;
+            }
+
+            return result;
         }
     }
 }

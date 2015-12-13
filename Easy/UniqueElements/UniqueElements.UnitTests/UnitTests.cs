@@ -28,5 +28,27 @@ namespace UniqueElements.UnitTests
 
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TestMethod3()
+        {
+            string input = "2,2,2,2,2";
+            string expected = "2";
+
+            string result = StringProcessor.GetUniqueElements(input);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestMethod4()
+        {
+            string input = "13,13,13,14,15,15,16,16,17,17,18";
+            string expected = "13,14,15,16,17,18";
+
+            string result = StringProcessor.GetUniqueElements(input);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
