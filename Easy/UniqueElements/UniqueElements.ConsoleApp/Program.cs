@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UniqueElements.ConsoleApp
 {
@@ -16,8 +13,18 @@ namespace UniqueElements.ConsoleApp
                 {
                     var line = reader.ReadLine();
                     if (null == line) continue;
-                    // do something with line
+                    Console.WriteLine(StringProcessor.GetUniqueElements(line));
                 }
+        }
+    }
+
+    public static class StringProcessor
+    {
+        public static string GetUniqueElements(string input)
+        {
+            var splitInput = input.Split(',');
+            var output = splitInput.Distinct().Aggregate((workingString, nextElement) => workingString + ',' + nextElement);
+            return output;
         }
     }
 }
