@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RightmostChar.ConsoleApp
 {
@@ -15,9 +11,17 @@ namespace RightmostChar.ConsoleApp
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    if (null == line) continue;
-                    // do something with line
+                    if (string.IsNullOrWhiteSpace(line)) { continue; }
+                    Console.WriteLine(StringProcessor.RightmostChar(line));
                 }
+        }
+    }
+
+    public static class StringProcessor
+    {
+        public static int RightmostChar(string input)
+        {
+            return input.Remove(input.Length - 2).LastIndexOf(input[input.Length - 1]);
         }
     }
 }
