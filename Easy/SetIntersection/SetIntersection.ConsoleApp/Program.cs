@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SetIntersection.ConsoleApp
 {
@@ -16,8 +13,20 @@ namespace SetIntersection.ConsoleApp
                 {
                     var line = reader.ReadLine();
                     if (null == line) continue;
-                    // do something with line
+                    Console.WriteLine(SetComparer.GetIntersectingSet(line));
                 }
+        }
+    }
+
+    public static class SetComparer
+    {
+        public static string GetIntersectingSet(string input)
+        {
+            var splitInput = input.Split(';');
+            var firstSet = splitInput[0].Split(',');
+            var secondSet = splitInput[1].Split(',');
+            var intersectingSet = firstSet.Intersect(secondSet).ToArray();
+            return intersectingSet.Length == 0 ? "" : intersectingSet.Aggregate((workingString, nextElement) => workingString + ',' + nextElement);
         }
     }
 }
