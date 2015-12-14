@@ -21,7 +21,14 @@ namespace RightmostChar.ConsoleApp
     {
         public static int RightmostChar(string input)
         {
-            return input.Remove(input.Length - 2).LastIndexOf(input[input.Length - 1]);
+            for (var i = input.Length - 3; i >= 0; i--)
+            {
+                if (input[i] == input[input.Length - 1])
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }
