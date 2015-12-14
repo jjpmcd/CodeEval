@@ -25,31 +25,13 @@ namespace SetIntersection.ConsoleApp
             var firstSplit = splitInput[0].Split(',');
             var secondSplit = splitInput[1].Split(',');
 
-            var firstSet = new int[firstSplit.Length];
-            var secondSet = new int[secondSplit.Length];
-
-            for (var index = 0; index < firstSplit.Length; index++)
-            {
-                firstSet[index] = int.Parse(firstSplit[index]);
-            }
-
-            for (var index = 0; index < secondSplit.Length; index++)
-            {
-                secondSet[index] = int.Parse(secondSplit[index]);
-            }
-
             var result = "";
             var next = 0;
-            foreach (var element in firstSet)
+            foreach (var element in firstSplit)
             {
-                for (var index = next; index < secondSet.Length; index++)
+                for (var index = next; index < secondSplit.Length; index++)
                 {
-                    if (element < secondSet[index])
-                    {
-                        next = index;
-                        break;
-                    }
-                    if (element != secondSet[index]) { continue; }
+                    if (element != secondSplit[index]) { continue; }
                     if (result != "") { result += ','; }
                     result += element;
                     next = index + 1;
