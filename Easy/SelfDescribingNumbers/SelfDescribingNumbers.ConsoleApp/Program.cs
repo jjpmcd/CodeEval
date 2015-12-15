@@ -22,19 +22,12 @@ namespace SelfDescribingNumbers.ConsoleApp
         public static bool IsSelfDescribingNumber(string input)
         {
             var digitCounts = new byte[10];
+            foreach (var digit in input) { digitCounts[CharToInt(digit)]++; }
 
-            foreach (char digit in input)
-            {
-                digitCounts[CharToInt(digit)]++;
-            }
-
-            for (int index = 0; index < input.Length; index++)
+            for (var index = 0; index < input.Length; index++)
             {
                 var number = CharToInt(input[index]);
-                if (number != digitCounts[index])
-                {
-                    return false;
-                }
+                if (number != digitCounts[index]) { return false; }
             }
 
             return true;
