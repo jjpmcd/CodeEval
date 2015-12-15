@@ -13,16 +13,15 @@ namespace HappyNumbers.ConsoleApp
                 {
                     var line = reader.ReadLine();
                     if (null == line) continue;
-                    Console.WriteLine(HappinessChecker.IsHappy(line));
+                    Console.WriteLine(HappinessChecker.IsHappy(int.Parse(line)) ? "1" : "0");
                 }
         }
     }
 
     public static class HappinessChecker
     {
-        public static string IsHappy(string input)
+        public static bool IsHappy(int result)
         {
-            var result = int.Parse(input);
             var previousResults = new List<int>();
 
             while (result != 1)
@@ -36,11 +35,11 @@ namespace HappyNumbers.ConsoleApp
                     dividend = Math.DivRem(dividend, divisor, out remainder);
                     result += remainder * remainder;
                 }
-                if (previousResults.Contains(result)) { return "0"; }
+                if (previousResults.Contains(result)) { return false; }
                 previousResults.Add(result);
             }
 
-            return "1";
+            return true;
         }
     }
 }

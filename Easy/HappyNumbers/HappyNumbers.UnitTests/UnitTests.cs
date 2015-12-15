@@ -10,34 +10,31 @@ namespace HappyNumbers.UnitTests
         [TestMethod]
         public void Number1IsAHappyNumber()
         {
-            string input = "1";
-            string expected = "1";
+            var input = 1;
 
-            string result = HappinessChecker.IsHappy(input);
+            var result = HappinessChecker.IsHappy(input);
 
-            Assert.AreEqual(expected, result);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void Number7IsAHappyNumber()
         {
-            string input = "7";
-            string expected = "1";
+            var input = 7;
 
-            string result = HappinessChecker.IsHappy(input);
+            var result = HappinessChecker.IsHappy(input);
 
-            Assert.AreEqual(expected, result);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void Number22IsNotAHappyNumber()
         {
-            string input = "22";
-            string expected = "0";
+            var input = 22;
 
-            string result = HappinessChecker.IsHappy(input);
+            var result = HappinessChecker.IsHappy(input);
 
-            Assert.AreEqual(expected, result);
+            Assert.IsFalse(result);
         }
     }
 }
