@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SelfDescribingNumbers.ConsoleApp
 {
@@ -16,8 +12,61 @@ namespace SelfDescribingNumbers.ConsoleApp
                 {
                     var line = reader.ReadLine();
                     if (null == line) continue;
-                    // do something with line
+                    Console.WriteLine(Numberifier.IsSelfDescribingNumber(line) ? "1" : "0");
                 }
+        }
+    }
+
+    public static class Numberifier
+    {
+        public static bool IsSelfDescribingNumber(string input)
+        {
+            var digitCounts = new byte[10];
+
+            foreach (char digit in input)
+            {
+                digitCounts[CharToInt(digit)]++;
+            }
+
+            for (int index = 0; index < input.Length; index++)
+            {
+                var number = CharToInt(input[index]);
+                if (number != digitCounts[index])
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static int CharToInt(char numeral)
+        {
+            switch (numeral)
+            {
+                case '0':
+                    return 0;
+                case '1':
+                    return 1;
+                case '2':
+                    return 2;
+                case '3':
+                    return 3;
+                case '4':
+                    return 4;
+                case '5':
+                    return 5;
+                case '6':
+                    return 6;
+                case '7':
+                    return 7;
+                case '8':
+                    return 8;
+                case '9':
+                    return 9;
+                default:
+                    throw new ArgumentException();
+            }
         }
     }
 }
