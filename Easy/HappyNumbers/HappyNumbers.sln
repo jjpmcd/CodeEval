@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyNumbers.ConsoleApp", "HappyNumbers.ConsoleApp\HappyNumbers.ConsoleApp.csproj", "{7AF2C7ED-EB8C-433B-9537-F18A9AAABBFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyNumbers.UnitTests", "HappyNumbers.UnitTests\HappyNumbers.UnitTests.csproj", "{F22A0971-7E1A-4FF4-A875-7CC7D6B84129}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AF2C7ED-EB8C-433B-9537-F18A9AAABBFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF2C7ED-EB8C-433B-9537-F18A9AAABBFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF2C7ED-EB8C-433B-9537-F18A9AAABBFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF2C7ED-EB8C-433B-9537-F18A9AAABBFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F22A0971-7E1A-4FF4-A875-7CC7D6B84129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F22A0971-7E1A-4FF4-A875-7CC7D6B84129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F22A0971-7E1A-4FF4-A875-7CC7D6B84129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F22A0971-7E1A-4FF4-A875-7CC7D6B84129}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
