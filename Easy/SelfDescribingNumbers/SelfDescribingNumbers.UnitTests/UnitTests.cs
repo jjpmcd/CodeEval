@@ -11,30 +11,33 @@ namespace SelfDescribingNumbers.UnitTests
         public void Number2020IsSelfDescribing()
         {
             var input = "2020";
+            var expected = '1';
 
             var result = Numberifier.IsSelfDescribingNumber(input);
 
-            Assert.IsTrue(result);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
         public void Number22IsNotSelfDescribing()
         {
             var input = "22";
+            var expected = '0';
 
             var result = Numberifier.IsSelfDescribingNumber(input);
 
-            Assert.IsFalse(result);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
         public void Number1210IsSelfDescribing()
         {
             var input = "1210";
+            var expected = '1';
 
             var result = Numberifier.IsSelfDescribingNumber(input);
 
-            Assert.IsTrue(result);
+            Assert.AreEqual(expected, result);
         }
     }
 }

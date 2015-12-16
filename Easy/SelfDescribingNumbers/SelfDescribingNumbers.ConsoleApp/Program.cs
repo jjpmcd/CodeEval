@@ -12,14 +12,14 @@ namespace SelfDescribingNumbers.ConsoleApp
                 {
                     var line = reader.ReadLine();
                     if (null == line) continue;
-                    Console.WriteLine(Numberifier.IsSelfDescribingNumber(line) ? "1" : "0");
+                    Console.WriteLine(Numberifier.IsSelfDescribingNumber(line));
                 }
         }
     }
 
     public static class Numberifier
     {
-        public static bool IsSelfDescribingNumber(string input)
+        public static char IsSelfDescribingNumber(string input)
         {
             var digitCounts = new byte[10];
             for (byte index = 0; index < input.Length; index++)
@@ -29,10 +29,10 @@ namespace SelfDescribingNumbers.ConsoleApp
 
             for (byte index = 0; index < input.Length; index++)
             {
-                if (input[index] - 48 != digitCounts[index]) { return false; }
+                if (input[index] - 48 != digitCounts[index]) { return '0'; }
             }
 
-            return true;
+            return '1';
         }
     }
 }
