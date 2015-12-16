@@ -22,12 +22,24 @@ namespace NModM.ConsoleApp
         public static int GetRemainder(string input)
         {
             var splitInput = input.Split(',');
-            var dividend = int.Parse(splitInput[0]);
-            var divisor = int.Parse(splitInput[1]);
+            var dividend = IntParseFast(splitInput[0]);
+            var divisor = IntParseFast(splitInput[1]);
 
             while (dividend >= divisor) { dividend -= divisor; }
 
             return dividend;
+        }
+
+        private static int IntParseFast(string value)
+        {
+            var result = 0;
+
+            for (var i = 0; i < value.Length; i++)
+            {
+                result = 10 * result + (value[i] - 48);
+            }
+
+            return result;
         }
     }
 }
