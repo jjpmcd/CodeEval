@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NModM.ConsoleApp", "NModM.ConsoleApp\NModM.ConsoleApp.csproj", "{F9140068-C0FF-486D-8AD0-01633A407AED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NModM.UnitTests", "NModM.UnitTests\NModM.UnitTests.csproj", "{A9931C40-1697-4A24-8B26-D7F19E38CDDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9140068-C0FF-486D-8AD0-01633A407AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9140068-C0FF-486D-8AD0-01633A407AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9140068-C0FF-486D-8AD0-01633A407AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9140068-C0FF-486D-8AD0-01633A407AED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9931C40-1697-4A24-8B26-D7F19E38CDDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9931C40-1697-4A24-8B26-D7F19E38CDDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9931C40-1697-4A24-8B26-D7F19E38CDDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9931C40-1697-4A24-8B26-D7F19E38CDDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
