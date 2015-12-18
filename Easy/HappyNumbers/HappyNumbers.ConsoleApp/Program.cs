@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace HappyNumbers.ConsoleApp
 {
@@ -8,13 +9,18 @@ namespace HappyNumbers.ConsoleApp
     {
         private static void Main(string[] args)
         {
-            using (var reader = File.OpenText(args[0]))
-                while (!reader.EndOfStream)
+            using (var fileStream = File.OpenRead(args[0]))
+            {
+                using (var reader = new StreamReader(fileStream, Encoding.ASCII, false))
                 {
-                    var line = reader.ReadLine();
-                    if (null == line) continue;
-                    Console.WriteLine(HappinessChecker.IsHappy(int.Parse(line)) ? "1" : "0");
+                    string line;
+                    while (!reader.EndOfStream)
+                    {
+                        line = reader.ReadLine();
+                        Console.WriteLine(HappinessChecker.IsHappy(int.Parse(line)) ? "1" : "0");
+                    }
                 }
+            }
         }
     }
 

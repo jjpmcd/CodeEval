@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace SetIntersection.ConsoleApp
 {
@@ -7,13 +8,18 @@ namespace SetIntersection.ConsoleApp
     {
         private static void Main(string[] args)
         {
-            using (var reader = File.OpenText(args[0]))
-                while (!reader.EndOfStream)
+            using (var fileStream = File.OpenRead(args[0]))
+            {
+                using (var reader = new StreamReader(fileStream, Encoding.ASCII, false))
                 {
-                    var line = reader.ReadLine();
-                    if (null == line) continue;
-                    Console.WriteLine(SetComparer.GetIntersectingSet(line));
+                    string line;
+                    while (!reader.EndOfStream)
+                    {
+                        line = reader.ReadLine();
+                        Console.WriteLine(SetComparer.GetIntersectingSet(line));
+                    }
                 }
+            }
         }
     }
 

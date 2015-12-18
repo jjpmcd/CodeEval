@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace FibonacciSeries.ConsoleApp
 {
@@ -7,13 +8,18 @@ namespace FibonacciSeries.ConsoleApp
     {
         private static void Main(string[] args)
         {
-            using (var reader = File.OpenText(args[0]))
-                while (!reader.EndOfStream)
+            using (var fileStream = File.OpenRead(args[0]))
+            {
+                using (var reader = new StreamReader(fileStream, Encoding.ASCII, false))
                 {
-                    var line = reader.ReadLine();
-                    if (null == line) continue;
-                    Console.WriteLine(FibonacciGenerator.GetNthNumber(line));
+                    string line;
+                    while (!reader.EndOfStream)
+                    {
+                        line = reader.ReadLine();
+                        Console.WriteLine(FibonacciGenerator.GetNthNumber(line));
+                    }
                 }
+            }
         }
     }
 
@@ -22,7 +28,7 @@ namespace FibonacciSeries.ConsoleApp
         public static int GetNthNumber(string input)
         {
             var n = int.Parse(input);
-            
+
             if (n < 2) return n;
 
             var nMinus2 = 0;

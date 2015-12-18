@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace RightmostChar.ConsoleApp
 {
@@ -7,13 +8,19 @@ namespace RightmostChar.ConsoleApp
     {
         private static void Main(string[] args)
         {
-            using (var reader = File.OpenText(args[0]))
-                while (!reader.EndOfStream)
+            using (var fileStream = File.OpenRead(args[0]))
+            {
+                using (var reader = new StreamReader(fileStream, Encoding.ASCII, false))
                 {
-                    var line = reader.ReadLine();
-                    if (string.IsNullOrWhiteSpace(line)) { continue; }
-                    Console.WriteLine(StringProcessor.RightmostChar(line));
+                    string line;
+                    while (!reader.EndOfStream)
+                    {
+                        line = reader.ReadLine();
+                        if (string.IsNullOrWhiteSpace(line)) { continue; }
+                        Console.WriteLine(StringProcessor.RightmostChar(line));
+                    }
                 }
+            }
         }
     }
 

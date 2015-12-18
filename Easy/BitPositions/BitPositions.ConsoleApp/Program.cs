@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace BitPositions.ConsoleApp
 {
@@ -7,14 +8,19 @@ namespace BitPositions.ConsoleApp
     {
         private static void Main(string[] args)
         {
-            using (var reader = File.OpenText(args[0]))
-                while (!reader.EndOfStream)
+            using (var fileStream = File.OpenRead(args[0]))
+            {
+                using (var reader = new StreamReader(fileStream, Encoding.ASCII, false))
                 {
-                    var line = reader.ReadLine();
-                    if (null == line) continue;
-                    Console.WriteLine(
+                    string line;
+                    while (!reader.EndOfStream)
+                    {
+                        line = reader.ReadLine();
+                        Console.WriteLine(
                         BitChecker.AreEqualAtPositions(line) ? "true" : "false");
+                    }
                 }
+            }
         }
     }
 
@@ -26,7 +32,7 @@ namespace BitPositions.ConsoleApp
             var n = int.Parse(splitInput[0]);
             var p1 = int.Parse(splitInput[1]);
             var p2 = int.Parse(splitInput[2]);
-            
+
             var mask1 = 1 << (p1 - 1);
             var mask2 = 1 << (p2 - 1);
 

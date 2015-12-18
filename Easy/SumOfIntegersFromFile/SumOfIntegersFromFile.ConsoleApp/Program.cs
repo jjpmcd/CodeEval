@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace SumOfIntegersFromFile.ConsoleApp
 {
@@ -8,14 +9,20 @@ namespace SumOfIntegersFromFile.ConsoleApp
         private static void Main(string[] args)
         {
             var total = 0;
-            using (var reader = File.OpenText(args[0]))
-                while (!reader.EndOfStream)
+            using (var fileStream = File.OpenRead(args[0]))
+            {
+                using (var reader = new StreamReader(fileStream, Encoding.ASCII, false))
                 {
-                    var line = reader.ReadLine();
-                    if (null == line) continue;
-                    total += int.Parse(line);
+                    string line;
+                    while (!reader.EndOfStream)
+                    {
+                        line = reader.ReadLine();
+                        if (null == line) continue;
+                        total += int.Parse(line);
+                    }
+                    Console.WriteLine(total);
                 }
-            Console.WriteLine(total);
+            }
         }
     }
 }
