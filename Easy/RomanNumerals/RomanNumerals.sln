@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumerals.ConsoleApp", "RomanNumerals.ConsoleApp\RomanNumerals.ConsoleApp.csproj", "{17909572-21F5-433C-B123-0663BFEAEFEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumerals.UnitTests", "RomanNumerals.UnitTests\RomanNumerals.UnitTests.csproj", "{1C39C5AE-C11D-471E-81E1-DE00FDAF47EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17909572-21F5-433C-B123-0663BFEAEFEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17909572-21F5-433C-B123-0663BFEAEFEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17909572-21F5-433C-B123-0663BFEAEFEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17909572-21F5-433C-B123-0663BFEAEFEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C39C5AE-C11D-471E-81E1-DE00FDAF47EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C39C5AE-C11D-471E-81E1-DE00FDAF47EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C39C5AE-C11D-471E-81E1-DE00FDAF47EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C39C5AE-C11D-471E-81E1-DE00FDAF47EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
