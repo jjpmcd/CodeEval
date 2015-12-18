@@ -33,19 +33,24 @@ namespace PrimePalindrome.ConsoleApp
             return isPalindrome;
         }
 
-        public static bool IsPrime(int number)
+        public static bool IsPrime(int candidate)
         {
-            var isPrime = true;
-            var upperBound = (int)Math.Sqrt(number) + 1;
-
-            for (var i = 2; i < upperBound; i++)
+            if (candidate <= 3)
             {
-                if (number % i != 0) continue;
-                isPrime = false;
-                break;
+                return candidate > 1;
             }
-
-            return isPrime;
+            if (candidate % 3 == 0 || candidate % 2 == 0)
+            {
+                return false;
+            }
+            for (var index = 5; index < (int)Math.Sqrt(candidate) + 1; index += 6)
+            {
+                if (candidate % index == 0 || candidate % (index + 2) == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public static int FindLargestPrimePalindrome(int upperBound)
