@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 
 namespace ReverseWords.ConsoleApp
 {
@@ -31,12 +30,6 @@ namespace ReverseWords.ConsoleApp
             }
 
             return result;
-        }
-
-        public static string ReverseWordsLINQ(string sentence)
-        {
-            return sentence.Split(' ').Reverse().Aggregate(
-                (workingSentence, nextWord) => workingSentence + " " + nextWord);
         }
     }
 }
