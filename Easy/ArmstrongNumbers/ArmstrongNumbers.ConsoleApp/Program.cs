@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace ArmstrongNumbers.ConsoleApp
@@ -18,11 +16,36 @@ namespace ArmstrongNumbers.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line
+                        Console.WriteLine(NumberParser.IsArmstrongNumber(line) ? "True" : "False");
                     }
                 }
             }
+        }
+    }
 
+    public static class NumberParser
+    {
+        public static bool IsArmstrongNumber(string input)
+        {
+            if (input.Length == 1) { return true; }
+
+            var number = 0;
+            var sum = 0;
+
+            for (var i = 0; i < input.Length; i++)
+            {
+                number = 10 * number + (input[i] - 48);
+                sum += MathPowFast(input[i] - 48, input.Length);
+            }
+
+            return number == sum;
+        }
+
+        private static int MathPowFast(int number, int power)
+        {
+            var result = 1;
+            for (var i = 0; i < power; i++) { result *= number; }
+            return result;
         }
     }
 }
