@@ -56,6 +56,12 @@
     <Compile Include="UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BeautifulStrings.ConsoleApp\BeautifulStrings.ConsoleApp.csproj">
+      <Project>{499452e2-d54e-4b06-9480-b2732836f409}</Project>
+      <Name>BeautifulStrings.ConsoleApp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

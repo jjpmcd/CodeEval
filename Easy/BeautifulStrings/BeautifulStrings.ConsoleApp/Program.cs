@@ -18,10 +18,42 @@ namespace BeautifulStrings.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                    }
+                        Console.WriteLine(Beautifier.GetMaxBeauty(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class Beautifier
+    {
+        public static int GetMaxBeauty(string input)
+        {
+            var counts = new int[26];
+
+            for (var i = 0; i < input.Length; i++)
+            {
+                if (input[i] > 64 && input[i] < 91)
+                {
+                    counts[input[i] - 65]++;
+                    continue;
+                }
+                if (input[i] > 96 && input[i] < 123)
+                {
+                    counts[input[i] - 97]++;
+                }
+            }
+
+            Array.Sort(counts);
+
+            var score = 0;
+            for (int i = counts.Length - 1; i >= 0; i--)
+            {
+                if (counts[i] == 0) { break; }
+                score += counts[i] * (i + 1);
+            }
+
+            return score;
         }
     }
 }
