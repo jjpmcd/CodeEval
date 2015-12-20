@@ -12,7 +12,7 @@ namespace QueryBoard.ConsoleApp
             {
                 using (var reader = new StreamReader(fileStream, Encoding.ASCII, false))
                 {
-                    var queryBoard = Board.GetNewBoard();
+                    var queryBoard = new int[256][];
                     string line;
                     while (!reader.EndOfStream)
                     {
@@ -56,9 +56,12 @@ namespace QueryBoard.ConsoleApp
         private static int QueryCol(int[][] queryBoard, int target)
         {
             int sum = 0;
-            for (var i = 0; i < queryBoard.Length; i++)
+            for (var i = 0; i < 256; i++)
             {
-                sum += queryBoard[i][target];
+                if (queryBoard[i] != null)
+                {
+                    sum += queryBoard[i][target];
+                }
             }
 
             return sum;
@@ -67,9 +70,12 @@ namespace QueryBoard.ConsoleApp
         private static int QueryRow(int[][] queryBoard, int target)
         {
             int sum = 0;
-            for (var i = 0; i < queryBoard[target].Length; i++)
+            for (var i = 0; i < 256; i++)
             {
-                sum += queryBoard[target][i];
+                if (queryBoard[target] != null)
+                {
+                    sum += queryBoard[target][i];
+                }
             }
 
             return sum;
@@ -77,28 +83,26 @@ namespace QueryBoard.ConsoleApp
 
         private static void SetCol(int[][] queryBoard, int target, int value)
         {
-            for (var i = 0; i < queryBoard.Length; i++)
+            for (var i = 0; i < 256; i++)
             {
+                if (queryBoard[i] == null)
+                {
+                    queryBoard[i] = new int[256];
+                }
                 queryBoard[i][target] = value;
             }
         }
 
         private static void SetRow(int[][] queryBoard, int target, int value)
         {
-            for (var i = 0; i < queryBoard[target].Length; i++)
+            for (var i = 0; i < 256; i++)
             {
+                if (queryBoard[target] == null)
+                {
+                    queryBoard[target] = new int[256];
+                }
                 queryBoard[target][i] = value;
             }
-        }
-
-        public static int[][] GetNewBoard()
-        {
-            var queryBoard = new int[256][];
-            for (var i = 0; i < queryBoard.Length; i++)
-            {
-                queryBoard[i] = new int[256];
-            }
-            return queryBoard;
         }
 
         private static int IntParseFast(string value)
