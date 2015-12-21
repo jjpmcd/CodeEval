@@ -85,7 +85,7 @@ QueryCol 2";
 
         public static string TestHelper(string lines)
         {
-            var queryBoard = new int[256][];
+            var queryBoard = new byte[256][];
             var builder = new StringBuilder();
             var reader = new StringReader(lines);
             string line;

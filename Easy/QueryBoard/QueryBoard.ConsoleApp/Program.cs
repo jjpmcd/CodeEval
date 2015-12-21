@@ -12,7 +12,7 @@ namespace QueryBoard.ConsoleApp
             {
                 using (var reader = new StreamReader(fileStream, Encoding.ASCII, false))
                 {
-                    var queryBoard = new int[256][];
+                    var queryBoard = new byte[256][];
                     string line;
                     while (!reader.EndOfStream)
                     {
@@ -27,7 +27,7 @@ namespace QueryBoard.ConsoleApp
 
     public static class Board
     {
-        public static int Query(string input, int[][] queryBoard)
+        public static int Query(string input, byte[][] queryBoard)
         {
             var splitInput = input.Split(' ');
             var target = IntParseFast(splitInput[1]);
@@ -35,11 +35,11 @@ namespace QueryBoard.ConsoleApp
 
             if (input[3] == 'R')
             {
-                SetRow(queryBoard, target, IntParseFast(splitInput[2]));
+                SetRow(queryBoard, target, (byte) IntParseFast(splitInput[2]));
             }
             else if (input[3] == 'C')
             {
-                SetCol(queryBoard, target, IntParseFast(splitInput[2]));
+                SetCol(queryBoard, target, (byte) IntParseFast(splitInput[2]));
             }
             else if (input[5] == 'R')
             {
@@ -53,7 +53,7 @@ namespace QueryBoard.ConsoleApp
             return sum;
         }
 
-        private static int QueryCol(int[][] queryBoard, int target)
+        private static int QueryCol(byte[][] queryBoard, int target)
         {
             int sum = 0;
             for (var i = 0; i < 256; i++)
@@ -67,7 +67,7 @@ namespace QueryBoard.ConsoleApp
             return sum;
         }
 
-        private static int QueryRow(int[][] queryBoard, int target)
+        private static int QueryRow(byte[][] queryBoard, int target)
         {
             int sum = 0;
             for (var i = 0; i < 256; i++)
@@ -81,25 +81,25 @@ namespace QueryBoard.ConsoleApp
             return sum;
         }
 
-        private static void SetCol(int[][] queryBoard, int target, int value)
+        private static void SetCol(byte[][] queryBoard, int target, byte value)
         {
             for (var i = 0; i < 256; i++)
             {
                 if (queryBoard[i] == null)
                 {
-                    queryBoard[i] = new int[256];
+                    queryBoard[i] = new byte[256];
                 }
                 queryBoard[i][target] = value;
             }
         }
 
-        private static void SetRow(int[][] queryBoard, int target, int value)
+        private static void SetRow(byte[][] queryBoard, int target, byte value)
         {
             for (var i = 0; i < 256; i++)
             {
                 if (queryBoard[target] == null)
                 {
-                    queryBoard[target] = new int[256];
+                    queryBoard[target] = new byte[256];
                 }
                 queryBoard[target][i] = value;
             }
