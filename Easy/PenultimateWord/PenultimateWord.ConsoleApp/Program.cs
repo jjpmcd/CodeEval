@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace PenultimateWord.ConsoleApp
@@ -18,10 +16,20 @@ namespace PenultimateWord.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(Scanner.GetPenultimateWord(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class Scanner
+    {
+        public static string GetPenultimateWord(string input)
+        {
+            if (input.IndexOf(' ') == -1) { return input; }
+            var words = input.Split(' ');
+            return words[words.Length - 2];
         }
     }
 }
