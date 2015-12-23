@@ -28,8 +28,9 @@ namespace CapitalizeWords.ConsoleApp
         public static string ToTitleCase(string input)
         {
             var output = "";
+            var last = input.LastIndexOf(' ') + 2;
             var capitilize = true;
-            for (var index = 0; index < input.Length; index++)
+            for (var index = 0; index < last; index++)
             {
                 if (capitilize)
                 {
@@ -43,7 +44,7 @@ namespace CapitalizeWords.ConsoleApp
                 output += input[index];
             }
 
-            return output;
+            return output + input.Substring(last);
         }
 
         private static char Capitalize(char candidate)

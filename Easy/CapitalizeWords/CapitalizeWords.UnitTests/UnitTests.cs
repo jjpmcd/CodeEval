@@ -16,6 +16,7 @@ namespace CapitalizeWords.UnitTests
 
             Assert.AreEqual(expected, result);
         }
+
         [TestMethod]
         public void TestMethod2()
         {
@@ -26,6 +27,7 @@ namespace CapitalizeWords.UnitTests
 
             Assert.AreEqual(expected, result);
         }
+
         [TestMethod]
         public void TestMethod3()
         {
@@ -36,11 +38,23 @@ namespace CapitalizeWords.UnitTests
 
             Assert.AreEqual(expected, result);
         }
+
         [TestMethod]
         public void TestMethod4()
         {
             string input = "1st thing";
             string expected = "1st Thing";
+
+            string result = Caser.ToTitleCase(input);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestMethod5()
+        {
+            string input = "thing";
+            string expected = "Thing";
 
             string result = Caser.ToTitleCase(input);
 
