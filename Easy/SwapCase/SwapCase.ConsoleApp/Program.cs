@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace SwapCase.ConsoleApp
@@ -18,10 +16,34 @@ namespace SwapCase.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(Swapper.SwapCase(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class Swapper
+    {
+        public static string SwapCase(string input)
+        {
+            var output = "";
+            for (var i = 0; i < input.Length; i++)
+            {
+                if (char.IsUpper(input[i]))
+                {
+                    output += (char)(input[i] + 32);
+                    continue;
+                }
+                if (char.IsLower(input[i]))
+                {
+                    output += (char)(input[i] - 32);
+                    continue;
+                }
+                output += input[i];
+            }
+
+            return output;
         }
     }
 }
