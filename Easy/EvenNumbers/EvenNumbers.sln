@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvenNumbers.ConsoleApp", "EvenNumbers.ConsoleApp\EvenNumbers.ConsoleApp.csproj", "{7674BFA4-D955-468C-92E2-366112D4A131}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvenNumbers.UnitTests", "EvenNumbers.UnitTests\EvenNumbers.UnitTests.csproj", "{D04A8EB6-F766-4CE6-86EF-E5459F92DDDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7674BFA4-D955-468C-92E2-366112D4A131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7674BFA4-D955-468C-92E2-366112D4A131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7674BFA4-D955-468C-92E2-366112D4A131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7674BFA4-D955-468C-92E2-366112D4A131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D04A8EB6-F766-4CE6-86EF-E5459F92DDDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D04A8EB6-F766-4CE6-86EF-E5459F92DDDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D04A8EB6-F766-4CE6-86EF-E5459F92DDDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D04A8EB6-F766-4CE6-86EF-E5459F92DDDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
