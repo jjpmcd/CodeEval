@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace EvenNumbers.ConsoleApp
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             using (var fileStream = File.OpenRead(args[0]))
             {
@@ -18,10 +16,27 @@ namespace EvenNumbers.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(Checker.IsEven(line) ? "1" : "0");
                     }
                 }
             }
+        }
+    }
+
+    public static class Checker
+    {
+        public static bool IsEven(string input)
+        {
+            switch (input[input.Length - 1])
+            {
+                case '0':
+                case '2':
+                case '4':
+                case '6':
+                case '8':
+                    return true;
+            }
+            return false;
         }
     }
 }
