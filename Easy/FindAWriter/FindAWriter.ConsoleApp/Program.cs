@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace FindAWriter.ConsoleApp
@@ -18,10 +16,40 @@ namespace FindAWriter.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(CodeCracker.GetWriter(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class CodeCracker
+    {
+        public static string GetWriter(string input)
+        {
+            var indexOfPipe = input.IndexOf('|');
+            var encodedMessage = input.Substring(0, indexOfPipe);
+            var positions = input.Substring(indexOfPipe + 1).Split(' ');
+            var output = new StringBuilder();
+
+            for (var index = 1; index < positions.Length; index++)
+            {
+                output.Append(encodedMessage[IntParseFast(positions[index]) - 1]);
+            }
+
+            return output.ToString();
+        }
+
+        private static int IntParseFast(string value)
+        {
+            var result = 0;
+
+            for (var i = 0; i < value.Length; i++)
+            {
+                result = 10 * result + (value[i] - 48);
+            }
+
+            return result;
         }
     }
 }
