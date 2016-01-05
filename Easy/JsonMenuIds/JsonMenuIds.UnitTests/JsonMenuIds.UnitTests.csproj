@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5756A9D2-519E-4F90-BBF1-313A754FAEF5}</ProjectGuid>
+    <ProjectGuid>{1F35E20E-5C46-4402-8B8F-1C48D9A19D75}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CalculateDistance.UnitTests</RootNamespace>
-    <AssemblyName>CalculateDistance.UnitTests</AssemblyName>
+    <RootNamespace>JsonMenuIds.UnitTests</RootNamespace>
+    <AssemblyName>JsonMenuIds.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -25,7 +25,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -58,9 +57,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CalculateDistance.ConsoleApp\CalculateDistance.ConsoleApp.csproj">
-      <Project>{51d78337-5e07-431b-a804-bd9796242711}</Project>
-      <Name>CalculateDistance.ConsoleApp</Name>
+    <ProjectReference Include="..\JsonMenuIds.ConsoleApp\JsonMenuIds.ConsoleApp.csproj">
+      <Project>{64953470-56f8-49d2-9acd-1452dc3c954b}</Project>
+      <Name>JsonMenuIds.ConsoleApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
