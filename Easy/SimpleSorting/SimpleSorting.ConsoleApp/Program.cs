@@ -27,26 +27,29 @@ namespace SimpleSorting.ConsoleApp
     {
         public static string SimpleSort(string input)
         {
-            // TODO: Just sort the string values, don't parse
             var splitInput = input.Split(' ');
-            var parsedInput = new double[splitInput.Length];
+            var parsedInput = new int[splitInput.Length];
 
             for (var i = 0; i < parsedInput.Length; i++)
             {
-                parsedInput[i] = double.Parse(splitInput[i]);
+                parsedInput[i] = IntParseFast(splitInput[i]);
             }
 
-            Array.Sort(parsedInput);
+            Array.Sort(parsedInput, splitInput);
 
-            var builder = new StringBuilder(parsedInput[0].ToString("F3"));
+            return string.Join(" ", splitInput);
+        }
 
-            for (var i = 1; i < parsedInput.Length; i++)
+        private static int IntParseFast(string value)
+        {
+            var result = 0;
+            var isNegative = value[0] == '-';
+            for (var i = isNegative ? 1 : 0; i < value.Length; i++)
             {
-                builder.Append(' ');
-                builder.Append(parsedInput[i].ToString("F3"));
+                if(value[i] == '.') continue;
+                result = 10 * result + (value[i] - 48);
             }
-
-            return builder.ToString();
+            return isNegative ? result * -1 : result;
         }
     }
 }
