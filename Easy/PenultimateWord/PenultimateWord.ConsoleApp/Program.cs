@@ -27,9 +27,25 @@ namespace PenultimateWord.ConsoleApp
     {
         public static string GetPenultimateWord(string input)
         {
-            if (input.IndexOf(' ') == -1) { return input; }
-            var words = input.Split(' ');
-            return words[words.Length - 2];
+            var startSpaceIndex = -1;
+            var endSpaceIndex = -1;
+            for (var index = input.Length - 1; index >= 0; index--)
+            {
+                if (input[index] != ' ') continue;
+                if (endSpaceIndex == -1)
+                {
+                    endSpaceIndex = index;
+                }
+                else
+                {
+                    startSpaceIndex = index;
+                    break;
+                }
+            }
+
+            if (endSpaceIndex == -1) return input;
+
+            return startSpaceIndex == -1 ? input.Substring(0, endSpaceIndex) : input.Substring(startSpaceIndex + 1, endSpaceIndex - startSpaceIndex - 1);
         }
     }
 }
