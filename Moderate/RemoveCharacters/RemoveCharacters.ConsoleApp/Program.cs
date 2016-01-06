@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace RemoveCharacters.ConsoleApp
@@ -17,31 +16,38 @@ namespace RemoveCharacters.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        Console.WriteLine(StringManipulator.RemoveCharacters(line));
+                        Console.WriteLine(Scrubber.RemoveCharacters(line));
                     }
                 }
             }
         }
     }
 
-    public static class StringManipulator
+    public static class Scrubber
     {
         public static string RemoveCharacters(string input)
         {
-            var splitInput = input.Split(new[] { ", " }, StringSplitOptions.None);
-            return ScrubCharactersFromString(targetString: splitInput[0], charactersToScrub: splitInput[1]);
+            var indexOfComma = input.IndexOf(',');
+            var target = input.Substring(0, indexOfComma);
+            var chars = input.Substring(indexOfComma + 2);
+            return ScrubCharactersFromString(target, chars);
         }
 
-        private static string ScrubCharactersFromString(string targetString, string charactersToScrub)
+        private static string ScrubCharactersFromString(string target, string chars)
         {
-            var builder = new StringBuilder(targetString);
-            for (var targetIndex = 0; targetIndex < builder.Length; targetIndex++)
+            var scrubbed = "";
+            for (var targetIndex = 0; targetIndex < target.Length; targetIndex++)
             {
-                if (charactersToScrub.All(t => builder[targetIndex] != t)) continue;
-                builder.Remove(targetIndex, 1);
-                targetIndex--;
+                var matched = false;
+                for (var charsIndex = 0; charsIndex < chars.Length; charsIndex++)
+                {
+                    if (target[targetIndex] != chars[charsIndex]) continue;
+                    matched = true;
+                    break;
+                }
+                if (!matched) scrubbed += target[targetIndex];
             }
-            return builder.ToString();
+            return scrubbed;
         }
     }
 }

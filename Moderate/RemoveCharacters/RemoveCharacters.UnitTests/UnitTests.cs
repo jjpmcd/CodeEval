@@ -15,7 +15,7 @@ namespace RemoveCharacters.UnitTests
             var expected = "how re you";
 
             //Act
-            string result = StringManipulator.RemoveCharacters(input);
+            string result = Scrubber.RemoveCharacters(input);
 
             //Assert
             Assert.AreEqual(expected, result);
@@ -29,7 +29,7 @@ namespace RemoveCharacters.UnitTests
             var expected = "hllo worl";
 
             //Act
-            string result = StringManipulator.RemoveCharacters(input);
+            string result = Scrubber.RemoveCharacters(input);
 
             //Assert
             Assert.AreEqual(expected, result);
