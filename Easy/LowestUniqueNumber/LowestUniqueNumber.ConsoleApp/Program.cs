@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace LowestUniqueNumber.ConsoleApp
@@ -18,10 +16,46 @@ namespace LowestUniqueNumber.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(NumberGame.GetLowestUnique(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class NumberGame
+    {
+        public static int GetLowestUnique(string input)
+        {
+            var counts = new int[10];
+            var chars = new char[(input.Length + 1) / 2];
+            var charsIndex = 0;
+
+            for (var index = 0; index < input.Length; index += 2)
+            {
+                counts[input[index] - 48]++;
+                chars[charsIndex] = input[index];
+                charsIndex++;
+            }
+
+            return FindLowestUnique(counts, chars);
+        }
+
+        private static int FindLowestUnique(int[] counts, char[] chars)
+        {
+            for (var i = 1; i < counts.Length; i++)
+            {
+                if (counts[i] != 1) continue;
+                for (var j = 0; j < chars.Length; j++)
+                {
+                    if (chars[j] == i + 48)
+                    {
+                        return j + 1;
+                    }
+                }
+            }
+
+            return 0;
         }
     }
 }
