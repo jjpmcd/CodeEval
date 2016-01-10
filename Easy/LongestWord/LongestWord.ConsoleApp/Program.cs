@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace LongestWord.ConsoleApp
@@ -18,10 +16,31 @@ namespace LongestWord.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(Parser.GetLongestWord(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class Parser
+    {
+        public static string GetLongestWord(string input)
+        {
+            var splitInputs = input.Split(' ');
+            var longestIndex = 0;
+            var longestLength = 0;
+
+            for (var index = 0; index < splitInputs.Length; index++)
+            {
+                if (splitInputs[index].Length > longestLength)
+                {
+                    longestLength = splitInputs[index].Length;
+                    longestIndex = index;
+                }
+            }
+
+            return splitInputs[longestIndex];
         }
     }
 }
