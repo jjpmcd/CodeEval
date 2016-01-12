@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace MultiplyLists.ConsoleApp
@@ -18,10 +16,43 @@ namespace MultiplyLists.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(Calculator.MultiplyLists(line));
                     }
                 }
             }
         }
+    }
+
+    public static class Calculator
+    {
+        public static string MultiplyLists(string input)
+        {
+            var indexOfBar = input.IndexOf('|');
+            var arrayOne = input.Substring(0, indexOfBar - 1).Split(' ');
+            var arrayTwo = input.Substring(indexOfBar + 2).Split(' ');
+
+            var result = (IntParseFast(arrayOne[0]) * IntParseFast(arrayTwo[0])).ToString();
+
+            for (var index = 1; index < arrayOne.Length; index++)
+            {
+                result += ' ';
+                result += (IntParseFast(arrayOne[index]) * IntParseFast(arrayTwo[index])).ToString();
+            }
+
+            return result;
+        }
+
+        private static int IntParseFast(string value)
+        {
+            var result = 0;
+
+            for (var i = 0; i < value.Length; i++)
+            {
+                result = 10 * result + (value[i] - 48);
+            }
+
+            return result;
+        }
+
     }
 }
