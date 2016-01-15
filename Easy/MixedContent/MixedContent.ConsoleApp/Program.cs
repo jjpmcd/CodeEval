@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace MixedContent.ConsoleApp
@@ -18,10 +16,37 @@ namespace MixedContent.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(Sorter.GetSeparatedLists(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class Sorter
+    {
+        public static string GetSeparatedLists(string input)
+        {
+            string words = "";
+            string digits = "";
+
+            var splitInputs = input.Split(',');
+
+            for (var index = 0; index < splitInputs.Length; index++)
+            {
+                if (char.IsDigit(splitInputs[index][0]))
+                {
+                    digits += splitInputs[index] + ',';
+                }
+                else
+                {
+                    words += splitInputs[index] + ',';
+                }
+            }
+
+            if (words == "" || digits == "") return input;
+
+            return words.Remove(words.Length - 1) + '|' + digits.Remove(digits.Length - 1);
         }
     }
 }
