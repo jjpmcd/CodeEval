@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace HiddenDigits.ConsoleApp
@@ -18,10 +16,34 @@ namespace HiddenDigits.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(Processor.GetAllDigits(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class Processor
+    {
+        public static string GetAllDigits(string input)
+        {
+            string output = "";
+
+            for (var index = 0; index < input.Length; index++)
+            {
+                if (char.IsDigit(input[index]))
+                {
+                    output += input[index];
+                    continue;
+                }
+
+                if (input[index] > 96 && input[index] < 107)
+                {
+                    output += (char) (input[index] - 49);
+                }
+            }
+
+            return output == "" ? "NONE" : output;
         }
     }
 }
