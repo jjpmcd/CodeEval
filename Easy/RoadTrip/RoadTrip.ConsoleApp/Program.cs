@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -28,7 +27,8 @@ namespace RoadTrip.ConsoleApp
     {
         public static string GetDistances(string input)
         {
-            var distances = new List<int>();
+            var distances = InitializeArray(input);
+            var city = 0;
             var parsing = false;
             var workingValue = 0;
 
@@ -41,21 +41,36 @@ namespace RoadTrip.ConsoleApp
                     continue;
                 }
                 if (!parsing) continue;
-                distances.Add(workingValue);
+                distances[city] = workingValue;
+                city++;
                 parsing = false;
                 workingValue = 0;
             }
 
-            distances.Sort();
-            var output = distances[0].ToString();
+            Array.Sort(distances);
 
-            for (var index = 1; index < distances.Count; index++)
+            return FormatOutput(distances);
+        }
+
+        private static string FormatOutput(int[] distances)
+        {
+            var output = distances[0].ToString();
+            for (var index = 1; index < distances.Length; index++)
             {
                 output += ',';
                 output += distances[index] - distances[index - 1];
             }
-
             return output;
+        }
+
+        private static int[] InitializeArray(string input)
+        {
+            var numberOfElements = 0;
+            for (var index = 0; index < input.Length; index++)
+            {
+                if (input[index] == ';') numberOfElements++;
+            }
+            return new int[numberOfElements];
         }
     }
 }
