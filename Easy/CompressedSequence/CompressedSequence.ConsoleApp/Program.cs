@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace CompressedSequence.ConsoleApp
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             using (var fileStream = File.OpenRead(args[0]))
             {
@@ -18,10 +16,43 @@ namespace CompressedSequence.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(Dictator.GetCompressedSequence(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class Dictator
+    {
+        public static string GetCompressedSequence(string input)
+        {
+            var splitInputs = input.Split(' ');
+
+            var count = 1;
+            var output = "";
+
+            for (var index = 1; index < splitInputs.Length; index++)
+            {
+                if (splitInputs[index] == splitInputs[index - 1])
+                {
+                    count++;
+                    continue;
+                }
+
+                output += count;
+                output += ' ';
+                output += splitInputs[index - 1];
+                output += ' ';
+
+                count = 1;
+            }
+
+            output += count;
+            output += ' ';
+            output += splitInputs[splitInputs.Length - 1];
+
+            return output;
         }
     }
 }
