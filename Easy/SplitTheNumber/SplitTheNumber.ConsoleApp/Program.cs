@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace SplitTheNumber.ConsoleApp
@@ -18,10 +16,35 @@ namespace SplitTheNumber.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(Processor.GetSplitNumber(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class Processor
+    {
+        public static int GetSplitNumber(string input)
+        {
+            var indexOfSpace = input.IndexOf(' ');
+            var runningParse = 0;
+            var firstNumber = 0;
+            var subtract = false;
+            for (var index = 0; index < indexOfSpace; index++)
+            {
+                if (input[indexOfSpace + 1 + index] == '+' || 
+                    input[indexOfSpace + 1 + index] == '-')
+                {
+                    firstNumber = runningParse;
+                    runningParse = 0;
+                    subtract = input[indexOfSpace + 1 + index] == '-';
+                }
+
+                runningParse = 10 * runningParse + (input[index] - 48);
+            }
+
+            return subtract ? firstNumber - runningParse : firstNumber + runningParse;
         }
     }
 }
