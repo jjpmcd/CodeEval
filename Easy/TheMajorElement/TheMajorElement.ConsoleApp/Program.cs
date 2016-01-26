@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -28,25 +27,32 @@ namespace TheMajorElement.ConsoleApp
     {
         public static string GetMajorElement(string input)
         {
-            var splitInputs = input.Split(',');
-            var frequencies = new Dictionary<string, int>();
+            var majorThreshold = GetNumberOfElements(input) / 2;
+            var frequencies = new int[101];
+            var runningParse = 0;
 
-            for (var index = 0; index < splitInputs.Length; index++)
+            for (var index = 0; index < input.Length; index++)
             {
-                if (!frequencies.ContainsKey(splitInputs[index]))
+                if (input[index] == ',')
                 {
-                    frequencies.Add(splitInputs[index], 0);
+                    frequencies[runningParse]++;
+                    if (frequencies[runningParse] > majorThreshold)
+                        return runningParse.ToString();
+                    runningParse = 0;
+                    continue;
                 }
-
-                frequencies[splitInputs[index]]++;
-
-                if (frequencies[splitInputs[index]] > splitInputs.Length / 2)
-                {
-                    return splitInputs[index];
-                }
+                runningParse = 10 * runningParse + (input[index] - 48);
             }
 
             return "None";
+        }
+
+        private static int GetNumberOfElements(string input)
+        {
+            var numberOfElements = -1;
+            for (var index = 0; index < input.Length; index++)
+                if (input[index] == ',') numberOfElements++;
+            return numberOfElements;
         }
     }
 }
