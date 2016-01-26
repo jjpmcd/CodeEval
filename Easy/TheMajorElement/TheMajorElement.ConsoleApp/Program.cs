@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace TheMajorElement.ConsoleApp
@@ -18,10 +17,36 @@ namespace TheMajorElement.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // Do something with line                   
+                        Console.WriteLine(Sequencer.GetMajorElement(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class Sequencer
+    {
+        public static string GetMajorElement(string input)
+        {
+            var splitInputs = input.Split(',');
+            var frequencies = new Dictionary<string, int>();
+
+            for (var index = 0; index < splitInputs.Length; index++)
+            {
+                if (!frequencies.ContainsKey(splitInputs[index]))
+                {
+                    frequencies.Add(splitInputs[index], 0);
+                }
+
+                frequencies[splitInputs[index]]++;
+
+                if (frequencies[splitInputs[index]] > splitInputs.Length / 2)
+                {
+                    return splitInputs[index];
+                }
+            }
+
+            return "None";
         }
     }
 }
