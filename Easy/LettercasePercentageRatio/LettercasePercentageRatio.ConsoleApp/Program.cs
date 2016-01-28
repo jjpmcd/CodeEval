@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace LettercasePercentageRatio.ConsoleApp
@@ -18,10 +16,28 @@ namespace LettercasePercentageRatio.ConsoleApp
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        // TODO: Do something with line
+                        Console.WriteLine(Scanner.GetLettercasePercentages(line));
                     }
                 }
             }
+        }
+    }
+
+    public static class Scanner
+    {
+        public static string GetLettercasePercentages(string input)
+        {
+            var lowerCount = 0;
+
+            for (var index = 0; index < input.Length; index++)
+            {
+                if (char.IsLower(input[index])) lowerCount++;
+            }
+
+            var lowerPercentage = (double)lowerCount / input.Length * 100;
+            var upperPercentage = 100 - lowerPercentage;
+
+            return string.Format("lowercase: {0} uppercase: {1}", lowerPercentage.ToString("F2"), upperPercentage.ToString("F2"));
         }
     }
 }
