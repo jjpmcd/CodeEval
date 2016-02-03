@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -30,32 +29,39 @@ namespace WorkingExperience.ConsoleApp
         {
             var intervals = ParseIntervals(input);
 
-            for (var i = 0; i < intervals.Count; i++)
+            for (var i = 0; i < intervals.Length; i++)
             {
-                for (var j = i + 1; j < intervals.Count; j++)
+                for (var j = i + 1; j < intervals.Length; j++)
                 {
                     if (intervals[i][1] < intervals[j][0]) continue;
                     if (intervals[i][0] > intervals[j][1]) continue;
                     intervals[j][0] = Math.Min(intervals[i][0], intervals[j][0]);
                     intervals[j][1] = Math.Max(intervals[i][1], intervals[j][1]);
-                    intervals.RemoveAt(i);
-                    i--;
+                    intervals[i][0] = -1;
                     break;
                 }
             }
 
             var totalMonths = 0;
-            for (var index = 0; index < intervals.Count; index++)
+            for (var index = 0; index < intervals.Length; index++)
+            {
+                if (intervals[index][0] == -1) continue;
                 totalMonths += intervals[index][1] - intervals[index][0];
+            }
 
             return totalMonths / 12;
         }
 
-        private static List<int[]> ParseIntervals(string input)
+        private static int[][] ParseIntervals(string input)
         {
+            var elements = 1;
+            for (var index = 0; index < input.Length; index++)
+                if (input[index] == ';') elements++;
+
             var months = 0;
-            var interval = new int[2];
-            var intervals = new List<int[]>();
+            var interval = 0;
+            var intervals = new int[elements][];
+            intervals[interval] = new int[2];
             for (var index = 0; index < input.Length; index++)
             {
                 switch (input[index])
@@ -65,23 +71,22 @@ namespace WorkingExperience.ConsoleApp
                         continue;
                     case '-':
                         months += ParseYearToMonths(input, index);
-                        interval[0] = months;
+                        intervals[interval][0] = months;
                         months = 0;
                         continue;
                     case ';':
                         months += ParseYearToMonths(input, index) + 1;
-                        interval[1] = months;
-                        intervals.Add(interval);
-                        interval = new int[2];
+                        intervals[interval][1] = months;
                         months = 0;
+                        interval++;
+                        intervals[interval] = new int[2];
                         index++;
                         break;
                 }
             }
 
             months += ParseYearToMonths(input, input.Length) + 1;
-            interval[1] = months;
-            intervals.Add(interval);
+            intervals[interval][1] = months;
 
             return intervals;
         }
