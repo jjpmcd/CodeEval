@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace DataRecovery.ConsoleApp
@@ -30,42 +28,40 @@ namespace DataRecovery.ConsoleApp
         public static string GetSentence(string input)
         {
             var indexOfSemiColon = input.IndexOf(';');
-            var words = input.Substring(0, indexOfSemiColon).Split(' ');
-            var indices = GetIndices(input.Substring(indexOfSemiColon + 1, input.Length - indexOfSemiColon - 1));
+            var scrambled = input.Substring(0, indexOfSemiColon).Split(' ');
+            var length = scrambled.Length;
 
-            var output = words[indices.IndexOf(1)];
-            for (var position = 2; position < words.Length + 1; position++)
-            {
-                output += ' ';
-                output += words[indices.IndexOf(position)];
-            }
+            var indices = CalculateIndices(length, input.Substring(indexOfSemiColon + 1, input.Length - indexOfSemiColon - 1));
 
-            return output;
+            var unscrambled = new string[scrambled.Length];
+
+            for (var index = 0; index < scrambled.Length; index++)
+                unscrambled[indices[index] - 1] = scrambled[index];
+
+            return string.Join(" ", unscrambled);
         }
 
-        private static List<int> GetIndices(string indicesString)
+        private static int[] CalculateIndices(int length, string indicesString)
         {
-            var indices = new List<int>();
+            var indices = new int[length];
             var runningParse = 0;
             var sum = 0;
+            var count = 0;
             for (var index = 0; index < indicesString.Length; index++)
             {
                 if (indicesString[index] == ' ')
                 {
-                    indices.Add(runningParse);
+                    indices[count] = runningParse;
                     sum += runningParse;
                     runningParse = 0;
+                    count++;
                     continue;
                 }
                 runningParse = 10 * runningParse + (indicesString[index] - 48);
             }
-            indices.Add(runningParse);
+            indices[count] = runningParse;
             sum += runningParse;
-
-            var length = indices.Count + 1;
-            var missingIndex = length * (length + 1) / 2 - sum;
-
-            indices.Add(missingIndex);
+            indices[count + 1] = length * (length + 1) / 2 - sum;
             return indices;
         }
     }
